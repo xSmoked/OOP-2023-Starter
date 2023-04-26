@@ -14,7 +14,7 @@ public class Word {
         String poem = "";
         for(Follow f : follows)
         {
-            poem += f.toString();
+            poem += " " + f.toString();
         }
         return poem;
     }
