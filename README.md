@@ -78,7 +78,7 @@ To write a poem, DANI picks one word at random from the model and starts with th
 
 DANI prints the generated sonnet to the Processing window. Pressing SPACE will generate a new sonnet:
 
-![image](poem.png)
+![image](images/poem.png)
 
 ## Instructions
 
@@ -86,7 +86,7 @@ DANI prints the generated sonnet to the Processing window. Pressing SPACE will g
 - Clone your fork
 - Setup upstream and origin remotes
 - Make a class called Follow that has fields for the word (a String) and the count (an int). Make accessor methods and constructors and a toString()
-- Make a class called Word that has fields for the word (a String) and an ArrayList of type Follow as fields. Make accessor methods, a constructor and a toStringMethod that will iterate through the follows ArrayList.
+- Make a class called Word that has fields for the word (a String) and an ArrayList of type Follow as fields. Make accessor methods, a constructor and a toString Method that will iterate through the follows ArrayList. (See the printout of the model above).
 - Write a method on DANI.java called loadFile. Its purpose is to load the document into the model. You can use the following functions in your solution:
 
 
@@ -95,9 +95,9 @@ DANI prints the generated sonnet to the Processing window. Pressing SPACE will g
 	split(line, ' '); // Split a string into an array of words
 	w.replaceAll("[^\\w\\s]",""); // Remove punction characters
 	s.toLowerCase() // Convert a string to lower case 
-	```Java
-
-	Also you will find it helpful to write a method called findWord(str) that finds a word in the ArrayList so you can check if it already exists
+	```
+	
+	Also you will find it helpful to write a method called findWord(str) that finds a word in the model so you can check if it already exists. You can add this method to DANI.java
 	Similarly, you will find it helpful to write a method called findFollow(str) on the Word class
 	You can make these methods return null if there is no match.
 
