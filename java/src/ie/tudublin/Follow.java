@@ -12,7 +12,7 @@ public class Follow {
     }
     
     public String toString() {
-        return word + "\t" + count;
+        return word;
     }
 
     public String getWord() {
