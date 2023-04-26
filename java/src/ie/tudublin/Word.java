@@ -19,6 +19,20 @@ public class Word {
         return poem;
     }
 
+    public boolean findFollow(String word)
+    {
+        word = word.toLowerCase();
+        word = word.replaceAll("[^\\w\\s]", "");
+        for(Follow f : follows)
+        {
+            if(f.getWord().equals(word))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getWord() {
         return word;
     }

@@ -65,4 +65,16 @@ public class DANI extends PApplet {
 		}
 		return splitListArray;
 	}
+
+	public boolean findWord(String str){
+		str = str.toLowerCase();
+		str = str.replaceAll("[^\\w\\s]", "");
+
+		for (String word : loadedWords) {
+			if (word.equals(str)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
