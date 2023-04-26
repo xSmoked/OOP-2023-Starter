@@ -52,9 +52,9 @@ stole that fair friend for through 1e7
 
 ```
 
-DANI works, by loading a text document and storing a list of each word from the document in an ArrayList along with an ArrayList of what words follow the word. This is called the "model". For example, for this input file:
+DANI works, by loading a text document and storing a list of each word from the document in an ArrayList along with an ArrayList of what words follow the word. This is called the *model*. For example, for this input file:
 
-````
+```
 i love Star Trek
 love is love
 I love TU Dublin 
