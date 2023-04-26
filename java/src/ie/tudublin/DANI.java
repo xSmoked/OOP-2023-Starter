@@ -15,9 +15,37 @@ public class DANI extends PApplet {
     String[] sonnet;
 	String[] loadedWords;
 	ArrayList<Word> model = new ArrayList<Word>();
-
+	public void printSonnet(){
+		for(String line : sonnet){
+			System.out.println(line);
+		}
+	}
     public String[] writeSonnet()
     {
+		
+		sonnet = new String[14];
+		String line = "";
+		Word currentWord;
+		Follow currentFollow;
+
+		for(int i = 0; i < 14; i++){
+			currentWord = model.get((int)random(0, model.size()-1));
+			for(int j = 0; j < 3; j++){
+				if(currentWord.getFollows().isEmpty()){
+					break;
+				}
+				line += currentWord.getWord() + " ";
+				currentFollow = currentWord.getFollows().get((int)random(0, currentWord.getFollows().size()-1));
+				for(Word word : model){
+					if(word.getWord().equals(currentFollow.getWord())){
+						currentWord = word;
+						break;
+					}
+				}
+			}
+			sonnet[i] += line;
+		}
+		
         return null;
     }
 
@@ -27,10 +55,14 @@ public class DANI extends PApplet {
 		loadFile();
 		printModel();
 		
+		writeSonnet();
+		printSonnet();
 	}
 
 	public void keyPressed() {
-
+		if (key == ' ') {
+			writeSonnet();
+		}
 	}
 
 	float off = 0;
@@ -42,11 +74,14 @@ public class DANI extends PApplet {
 		noStroke();
 		textSize(20);
         textAlign(CENTER, CENTER);
+		for(int i = 0; i < 14; i++){
+			text(sonnet[i], width/2, 200 + (i * 20));
+		}
         
 	}
 
 	public void loadFile(){
-		String[] lines = loadStrings("small.txt");
+		String[] lines = loadStrings("shakespere.txt");
 
 		for(String line : lines){
 			line = line.toLowerCase();
