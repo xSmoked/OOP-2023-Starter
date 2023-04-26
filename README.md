@@ -126,6 +126,8 @@ No collaboration, or use of internet resources other than these are permitted du
 - [Java Reference](https://docs.oracle.com/en/java/)
 - [Git reference](https://git-scm.com/docs)
 
+You are also free to look at any of the other code in this repo
+
 Marking Scheme:
 
 | Task | Marks |
