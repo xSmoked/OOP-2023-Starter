@@ -78,7 +78,7 @@ To write a poem, DANI picks one word at random from the model and starts with th
 
 DANI prints the generated sonnet to the Processing window. Pressing SPACE will generate a new sonnet:
 
-![image](images/poem.png)
+![image](images/poem1.png)
 
 ## Instructions
 
