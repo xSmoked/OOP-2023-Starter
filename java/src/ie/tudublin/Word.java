@@ -19,18 +19,19 @@ public class Word {
         return poem;
     }
 
-    public boolean findFollow(String word)
+    public void findFollow(String word)
     {
-        word = word.toLowerCase();
-        word = word.replaceAll("[^\\w\\s]", "");
         for(Follow f : follows)
         {
             if(f.getWord().equals(word))
             {
-                return true;
+                System.out.println("In here");
+                f.setCount(f.getCount() + 1);
+                return;
             }
         }
-        return false;
+        follows.add(new Follow(word, 1));
+        return;
     }
 
     public String getWord() {

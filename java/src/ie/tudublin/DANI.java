@@ -14,6 +14,7 @@ public class DANI extends PApplet {
 
     String[] sonnet;
 	String[] loadedWords;
+	ArrayList<Word> model = new ArrayList<Word>();
 
     public String[] writeSonnet()
     {
@@ -23,7 +24,8 @@ public class DANI extends PApplet {
 	public void setup() {
 		colorMode(HSB);
 
-		loadedWords = loadFile();
+		loadFile();
+		printModel();
 		
 	}
 
@@ -43,38 +45,45 @@ public class DANI extends PApplet {
         
 	}
 
-	public String[] loadFile(){
+	public void loadFile(){
 		String[] lines = loadStrings("small.txt");
-		int wordCount = 0;
-		for (String line : lines) {
-			String[] splitLine = split(line, " ");
-			for (String word : splitLine) {
-				wordCount++;
+
+		for(String line : lines){
+			line = line.toLowerCase();
+			line = line.replaceAll("[^\\w\\s]", "");
+			loadedWords = line.split(" ");
+	
+			for(int i = 0; i < loadedWords.length; i++){
+				if(!findWord(loadedWords[i])){
+					model.add(new Word(loadedWords[i]));
+				}
+				for (Word word : model) {
+					if (word.getWord().equals(loadedWords[i]) && i < (loadedWords.length - 1)) {
+						word.findFollow(loadedWords[i + 1]);
+					}
+				}
 			}
 		}
-		String[] splitListArray = new String[wordCount];
-		int i = 0;
-		for (String line : lines) {
-			String[] splitLine = split(line, " ");
-			for (String word : splitLine) {
-				word = word.toLowerCase();
-				word = word.replaceAll("[^\\w\\s]", "");
-				splitListArray[i] = word;
-				i++;
-			}
-		}
-		return splitListArray;
 	}
 
 	public boolean findWord(String str){
-		str = str.toLowerCase();
-		str = str.replaceAll("[^\\w\\s]", "");
-
-		for (String word : loadedWords) {
-			if (word.equals(str)) {
+		for (Word word : model) {
+			if (word.getWord().equals(str)) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public void printModel(){
+		System.out.println("Model: ");
+		for (Word word : model) {
+			print(word.getWord() + ":");
+
+			for (Follow follow : word.getFollows()) {
+				System.out.print(" " + follow.getWord() + "(" + follow.getCount() + ")");
+			}
+			System.out.println();
+		}
 	}
 }
