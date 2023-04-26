@@ -30,11 +30,14 @@ public class DANI extends PApplet {
 
 		for(int i = 0; i < 14; i++){
 			currentWord = model.get((int)random(0, model.size()-1));
-			for(int j = 0; j < 3; j++){
+			line = "";
+			for(int j = 0; j < 8; j++){
 				if(currentWord.getFollows().isEmpty()){
 					break;
 				}
+
 				line += currentWord.getWord() + " ";
+
 				currentFollow = currentWord.getFollows().get((int)random(0, currentWord.getFollows().size()-1));
 				for(Word word : model){
 					if(word.getWord().equals(currentFollow.getWord())){
@@ -43,7 +46,7 @@ public class DANI extends PApplet {
 					}
 				}
 			}
-			sonnet[i] += line;
+			sonnet[i] = line;
 		}
 		
         return null;
